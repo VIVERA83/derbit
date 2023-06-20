@@ -1,0 +1,22 @@
+FROM python:3.11.0-slim-buster
+WORKDIR external_service
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV LOGGING__LEVEL="INFO"
+ENV HOST="0.0.0.0"
+ENV PORT="8000"
+
+ENV UVICORN_WORKERS=1
+ENV UVICORN_ARGS "main:app --host ${HOST} --port ${PORT} --workers ${UVICORN_WORKERS}"
+
+ENV POSTGRES__DB=""
+ENV POSTGRES__USER=""
+ENV POSTGRES__PASSWORD=""
+ENV POSTGRES__HOST="host.docker.internal"
+ENV POSTGRES__PORT=5432
+
+RUN pip install --upgrade pip  --no-cache-dir
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY external_service .
+CMD python main.py

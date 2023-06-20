@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  internal_service:
+    environment:
+      - COMPOSE_PROJECT_NAME
+    container_name: internal_service
+    build:
+      context: .
+      dockerfile: dockerfile_internal_service
+    env_file:
+      - .env
+    command: bash -c "
+      alembic upgrade head
+      && python main.py
+      "
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+
+  external_service:
+    container_name: external_service
+    build:
+      context: .
+      dockerfile: dockerfile_external_service
+    env_file:
+      - .env
+    ports:
+      - ${PORT}:${PORT}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    container_name: postgres_derbit
+    image: postgres:13-alpine3.15
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -V" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 5432:5432
+
+volumes:
+  postgres_volume:
+
