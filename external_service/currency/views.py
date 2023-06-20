@@ -2,13 +2,7 @@
 from datetime import datetime
 from typing import Any
 
-from currency.schemes import (
-    CurrencyEnum,
-    CurrencySchema,
-    query_end_date,
-    query_start_date,
-    query_ticket,
-)
+from currency.schemes import CurrencyEnum, CurrencySchema, query_end_date, query_start_date, query_ticket
 from fastapi import APIRouter, Request
 
 currency_route = APIRouter()

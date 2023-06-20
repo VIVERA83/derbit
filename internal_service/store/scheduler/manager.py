@@ -4,7 +4,6 @@ from datetime import datetime
 from typing import Optional
 
 from base.base_accessor import BaseAccessor
-from icecream import ic
 
 
 class ScheduleManager(BaseAccessor):
@@ -29,7 +28,6 @@ class ScheduleManager(BaseAccessor):
         }
         async with self.lock:
             result = await self.app.store.ws_accessor.send(msg)
-            ic(result)
             price = result["result"].get(ticker)
             date = datetime.fromtimestamp(result["usOut"] / 1_000_000)
             await self.app.store.derbit.add_currency_index(
