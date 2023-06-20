@@ -14,7 +14,7 @@ class DerbitAccessor(BaseAccessor):
     ) -> Currency:
         """Добавить новую запись о валюте."""
 
-        async with self.app.postgres.session.begin().session as session:
+        async with self.app.database.session.begin().session as session:
             currency = CurrencyModel(
                 title=ticker,
                 price=value,

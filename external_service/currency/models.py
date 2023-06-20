@@ -21,4 +21,6 @@ class CurrencyModel(Base):
     def as_dataclass(self) -> Currency:
         """Получить dataclass."""
         return Currency(self.id, self.title, self.price, self.create_date)
+
+
 #

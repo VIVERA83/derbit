@@ -17,15 +17,15 @@ config = {
 
 def setup_logging(app: "Application") -> None:
     """Параметры настройки логирования в приложении."""
-    if app.settings.logging_guru:
+    if app.settings.logging.guru:
         logger.configure(**config)
         logger.add(
             sys.stderr,
-            level=app.settings.logging_level,
+            level=app.settings.logging.level,
             backtrace=True,
             diagnose=True,
         )
         app.logger = logger
     else:
-        logging.basicConfig(level=app.settings.logging_level)
+        logging.basicConfig(level=app.settings.logging.level)
     app.logger.info("Starting logging")

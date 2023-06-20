@@ -5,9 +5,9 @@ import pytest
 from aiohttp import ClientSession, web
 from aiohttp.pytest_plugin import aiohttp_server
 from aiohttp.test_utils import TestClient, TestServer
-
 from core.app import make_app
 from store.ws.ws_accessor import WSAccessor
+
 from tests.fixtures import FIXTURE_PATH
 
 ETH = {
@@ -22,7 +22,7 @@ BTC = {
 }
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def clone_server():
     return make_app()
 
@@ -35,7 +35,6 @@ async def clone_cli(aiohttp_client, clone_server) -> TestClient:
 @pytest.fixture()
 async def server(clone_server) -> TestServer:
     return aiohttp_server(clone_server)
-
 
 
 def get_eth_original_response():

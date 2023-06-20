@@ -25,5 +25,5 @@ class Store:  # pylint: disable=R0903 # noqa
 
 def setup_store(app: "Application"):
     """Настройка Store, подключение к основному приложению."""
-    app.postgres = Database(app)
+    app.database = Database(app)
     app.store = Store(app)

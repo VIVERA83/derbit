@@ -16,12 +16,11 @@ class ErrorHandlingMiddleware(BaseHTTPMiddleware):
     """Обработка внутренних ошибок при выпоолнение обработсиков запроса."""
 
     async def dispatch(
-            self, request: "Request", call_next: RequestResponseEndpoint
+        self, request: "Request", call_next: RequestResponseEndpoint
     ) -> Response:
         """Обрапботка ошибок при мполнении handlers (views)."""
         try:
             response = await call_next(request)
-            # response.headers["Custom"] = "Example"
             return response
         except Exception as error:
             if isinstance(error, IntegrityError):

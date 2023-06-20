@@ -2,7 +2,7 @@
 import typing
 
 if typing.TYPE_CHECKING:
-    from core.app import Application
+    from core.componets import Application
 
 
 class BaseAccessor:

@@ -15,4 +15,4 @@ class Application(web.Application):
     #  ассессоры
     store: Optional["Store"] = None
     # подключенные БД
-    postgres: Optional["Database"] = None
+    database: Optional["Database"] = None

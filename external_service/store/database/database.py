@@ -16,7 +16,9 @@ class Base(DeclarativeBase):
     В частности указываем схему для хранения таблиц."""
 
     metadata = MetaData(schema=Settings().postgres.db_schema)
-    id: Mapped[UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    id: Mapped[UUID] = mapped_column(
+        UUID(as_uuid=True), primary_key=True, default=uuid4
+    )
 
     def __repr__(self):
         return f"{self.__class__.__name__}(id={self.id})"

@@ -17,11 +17,13 @@ class TestInternalService:
         [
             (ETH, get_eth_original_response()),
             (BTC, get_bth_original_response()),
-        ])
-    async def test_list_schema_including(self, server, clone_server,message, original_data):
+        ],
+    )
+    async def test_list_schema_including(
+        self, server, clone_server, message, original_data
+    ):
         url = "/ws/api/v2"
         resp = clone_server.get("/")
-
 
         # assert resp.status == 200, f'Получен неуспешный ({resp.status}) статус ответа. ' \
         #                            f'Скорее всего не все поля в querystring_schema помечены как необязательные'
