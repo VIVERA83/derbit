@@ -31,7 +31,7 @@ ___
 * </span><span style="color:orange">__Клонируем репозиторий:__</span>
 
 ```bash
-
+git clone git@github.com:VIVERA83/derbit.git
 ```
 
 * </span><span style="color:orange">__Переходи в папку с проектом:__</span>
@@ -53,9 +53,9 @@ PORT=8004
 TRACEBACK="False"
 
 # Настройка Postgres
-POSTGRES__DB=renovation_dev
-POSTGRES__USER=renovation_dev
-POSTGRES__PASSWORD=OwOtBdfep9Frut
+POSTGRES__DB=test_db
+POSTGRES__USER=test_user
+POSTGRES__PASSWORD=password
 POSTGRES__HOST=postgres_derbit
 POSTGRES__PORT=5432
 POSTGRES__DB_SCHEMA=derbit

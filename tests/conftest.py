@@ -1,1 +1,1 @@
-from .fixtures.internal_service import *
+from .fixtures import *
