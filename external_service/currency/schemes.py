@@ -21,6 +21,7 @@ query_ticket: CurrencyEnum = Query(
     title="Аббревиатура валюты",
     description=f"Аббревиатура валюты, Возможное значение: {CurrencyEnum.get_all_options()} ",
     example="BTH",
+    default="BTH",
 )
 query_start_date: datetime = Query(
     title="Начальная дата",
